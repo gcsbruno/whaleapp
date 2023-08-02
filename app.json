@@ -18,6 +18,13 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.whaleapp/gcsbruno/github",
+      "config": {
+        "googleSignIn": {
+          "apiKey": "<API_KEY>",
+          "certificateHash": "<CERTIFICATE_HASH"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
