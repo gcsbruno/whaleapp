@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, ImageSourcePropType, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { NavigationProp } from '@react-navigation/native';
 import GoogleButton from '../components/buttons/GoogleButton';
 import FacebookButton from '../components/buttons/FacebookButton';
@@ -17,38 +17,42 @@ const InitialScreen = ({ navigation }: InitialScreenProps): JSX.Element => {
         navigation.navigate('Login');
     };
 
+    const googleIcon: ImageSourcePropType = require('../../assets/icons/google.png')
+    const facebookIcon: ImageSourcePropType = require('../../assets/icons/facebook.png')
+    const appleIcon: ImageSourcePropType = require('../../assets/icons/apple.png')
+    const mailIcon: ImageSourcePropType = require('../../assets/icons/mail.png')
+
     return (
         <ImageBackground
             source={require('../../assets/images/initialBackground.png')}
             style={styles.background}
         >
             <View style={styles.container}>
-                <Title >Bem-vindo(a) ao Whale</Title>
+                <Title>Bem-vindo(a) ao Whale</Title>
                 <Paragraph>
                     Nós ajudamos você a centralizar os dados e valores de sua viagem em um só lugar.
                 </Paragraph>
                 <View style={styles.authbuttons}>
-
                     <Subtitle>Vamos começar?</Subtitle>
                     <GoogleButton
+                        icon={googleIcon}
                         title="Sign in with Google"
-                        onPress={() => { }}
-                        icon={<Icon name='google' size={30} />}
+                        onPress={() => {}}
                     />
                     <FacebookButton
                         title="Continue with Facebook"
                         onPress={() => { }}
-                        icon={<Icon name='facebook' size={30} color={900} />}
+                        icon={facebookIcon}
                     />
                     <AppleButton
                         title="Sign in with Apple"
                         onPress={() => { }}
-                        icon={<Icon name='apple' size={30} color={900} />}
+                        icon={appleIcon}
                     />
                     <EmailButton
                         title="Continue com o e-mail"
                         onPress={() => { }}
-                        icon={<Icon name='mail' size={30} color={900} />}
+                        icon={mailIcon}
                     />
 
                 </View>

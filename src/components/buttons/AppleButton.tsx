@@ -1,14 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 interface AppleButtonProps {
     title: string;
     onPress: () => void;
-    icon?: JSX.Element;
+    icon?: ImageSourcePropType;
 }
 
 const AppleButton = ({ title, onPress, icon }: AppleButtonProps) => (
     <TouchableOpacity style={styles.appleButton} onPress={onPress}>
+        {icon && <Image source={icon} style={styles.appleIcon} />}
         <Text style={styles.appleText}>{title}</Text>
     </TouchableOpacity>
 );

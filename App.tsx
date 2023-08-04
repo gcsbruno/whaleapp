@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components/native';
 import InitialScreen from './src/screens/InitialScreen';
 import { useFonts } from "expo-font";
 import { WorkSans_400Regular } from "@expo-google-fonts/work-sans";
+import LoginScreen from './src/screens/LoginScreen';
 
 const theme = {
   typography: {
