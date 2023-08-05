@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ImageBackground, ImageSourcePropType, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { NavigationProp } from '@react-navigation/native';
 import GoogleButton from '../components/buttons/GoogleButton';
@@ -6,16 +6,44 @@ import FacebookButton from '../components/buttons/FacebookButton';
 import AppleButton from '../components/buttons/AppleButton';
 import EmailButton from '../components/buttons/EmailButton';
 import { Paragraph, Subtitle, Title } from '../components/typograph/texts';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import { app, auth } from '../services/firebase/config';
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 
 type InitialScreenProps = {
     navigation: NavigationProp<any>;
 };
 
 const InitialScreen = ({ navigation }: InitialScreenProps): JSX.Element => {
-    const handleLoginPress = () => {
+
+    useEffect(() => {
+        GoogleSignin.configure({
+            webClientId: 'AIzaSyAyb1vlupF6Q3XUxivmcOT3HfOVwmhjjJs'
+        })
+    }, [])
+  
+    const signInWithGoogle = async () => {
+        try {
+            await GoogleSignin.hasPlayServices();
+            const { idToken } = await GoogleSignin.signIn();
+
+            const googleCredential = app.auth.GoogleAuthProvider.credential(idToken);
+            await app.auth().signInWithCredential(googleCredential)
+        } catch (error) {
+            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+                console.log('O login foi cancelado');
+            } else if (error.code === statusCodes.IN_PROGRESS) {
+                console.log('O login já está em progresso');
+            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+                console.log('Os Play Services não estão disponíveis');
+            } else {
+                console.error(error.message);
+            }
+        }
+    }
+
+    function handleLoginPress() {
         navigation.navigate('Login');
-    };
+    }
 
     const googleIcon: ImageSourcePropType = require('../../assets/icons/google.png')
     const facebookIcon: ImageSourcePropType = require('../../assets/icons/facebook.png')
@@ -37,7 +65,7 @@ const InitialScreen = ({ navigation }: InitialScreenProps): JSX.Element => {
                     <GoogleButton
                         icon={googleIcon}
                         title="Sign in with Google"
-                        onPress={() => {}}
+                        onPress={() => { }}
                     />
                     <FacebookButton
                         title="Continue with Facebook"
