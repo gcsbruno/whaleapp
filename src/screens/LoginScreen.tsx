@@ -1,8 +1,7 @@
 import React from 'react'
 import { NavigationProp } from '@react-navigation/native';
-import { Title } from '../components/typograph/texts';
-import { View, StyleSheet, ActivityIndicator, Text, SafeAreaView, ScrollView, StatusBar } from 'react-native';
-import { Image } from 'react-native-elements';
+import { View, StyleSheet, Text, SafeAreaView, ScrollView, StatusBar, TextInput, TouchableOpacity } from 'react-native';
+import Button from '../components/buttons/Button';
 
 type LoginScreenProps = {
     navigation: NavigationProp<any>;
@@ -23,6 +22,34 @@ const LoginScreen = ({ navigation }: LoginScreenProps): JSX.Element => {
                 <Text>
                     WHALE
                 </Text>
+
+                <Text>
+                    Faça Login
+                </Text>
+
+                <TextInput>
+                    E-mail
+                </TextInput>
+                <TextInput>
+                    Senha:
+                </TextInput>
+
+                <Button
+                    title="Fazer Login"
+                    onPress={() => { }}
+                    type='cta'
+                />
+
+                <Text>
+                    Não tem uma conta ainda?
+                </Text>
+
+                <TouchableOpacity>
+                    <Text>
+                        Cadastre-se
+                    </Text>
+                </TouchableOpacity>
+
             </ScrollView>
         </SafeAreaView>
     )
