@@ -15,13 +15,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "usesAppleSignIn": true
     },
     "android": {
       "package": "com.whaleapp/gcsbruno/github",
-      "config": {
-
-      },
+      "config": {},
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -31,7 +30,8 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-facebook"
+      "expo-facebook",
+      "expo-apple-authentication"
     ]
   }
 }

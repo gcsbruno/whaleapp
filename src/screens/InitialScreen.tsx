@@ -20,7 +20,6 @@ const InitialScreen = ({ navigation }: InitialScreenProps): JSX.Element => {
 
     const googleIcon: ImageSourcePropType = require('../../assets/icons/google.png')
     const facebookIcon: ImageSourcePropType = require('../../assets/icons/facebook.png')
-    const appleIcon: ImageSourcePropType = require('../../assets/icons/apple.png')
     const mailIcon: ImageSourcePropType = require('../../assets/icons/mail.png')
 
     return (
@@ -45,11 +44,7 @@ const InitialScreen = ({ navigation }: InitialScreenProps): JSX.Element => {
                         onPress={() => { }}
                         icon={facebookIcon}
                     />
-                    <AppleButton
-                        title="Sign in with Apple"
-                        onPress={() => { }}
-                        icon={appleIcon}
-                    />
+                    <AppleButton />
                     <EmailButton
                         title="Continue com o e-mail"
                         onPress={() => { }}

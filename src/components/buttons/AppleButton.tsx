@@ -1,18 +1,35 @@
 import React from 'react';
-import { Image, ImageSourcePropType, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import * as AppleAuthentication from 'expo-apple-authentication'
 
-interface AppleButtonProps {
-    title: string;
-    onPress: () => void;
-    icon?: ImageSourcePropType;
+
+export default function AppleButton() {
+    return (
+        <View>
+            <AppleAuthentication.AppleAuthenticationButton
+                buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
+                buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+                cornerRadius={5}
+                style={styles.appleButton}
+                onPress={async () => {
+                    try {
+                        const credential = await AppleAuthentication.signInAsync({
+                            requestedScopes: [
+                                AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+                                AppleAuthentication.AppleAuthenticationScope.EMAIL,
+                            ],
+                        })
+                    } catch (e) {
+                        if (e.code === 'ERR_REQUEST_CANCELED') {
+                            console.log(e)
+                        } else {
+                            console.log('')
+                        }
+                    }
+                }} />
+        </View>
+    )
 }
-
-const AppleButton = ({ title, onPress, icon }: AppleButtonProps) => (
-    <TouchableOpacity style={styles.appleButton} onPress={onPress}>
-        {icon && <Image source={icon} style={styles.appleIcon} />}
-        <Text style={styles.appleText}>{title}</Text>
-    </TouchableOpacity>
-);
 
 const styles = StyleSheet.create({
 
@@ -26,18 +43,4 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         marginBottom: 16
     },
-
-    appleIcon: {
-        width: 24,
-        height: 24,
-        marginRight: 16
-    },
-
-    appleText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#FFFFFF'
-    }
 })
-
-export default AppleButton;
