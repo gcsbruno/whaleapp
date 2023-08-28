@@ -31,7 +31,13 @@
     },
     "plugins": [
       "expo-facebook",
-      "expo-apple-authentication"
+      "expo-apple-authentication",
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow $(PRODUCT_NAME) to use Face ID."
+        }
+      ]
     ]
   }
 }

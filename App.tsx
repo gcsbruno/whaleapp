@@ -6,7 +6,7 @@ import { useFonts } from "expo-font";
 import { WorkSans_400Regular } from "@expo-google-fonts/work-sans";
 import InitialScreen from './src/screens/InitialScreen';
 import TutorialScreen from './src/screens/TutorialScreen'
-import LoginScreen from './src/screens/LoginScreen';
+import DashboardScreen from './src/screens/DashboardScreen';
 
 const theme = {
   typography: {
@@ -32,6 +32,7 @@ export default function App(): JSX.Element {
         <Stack.Navigator initialRouteName='Initial' screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login" component={InitialScreen} />
           <Stack.Screen name='Tutorial' component={TutorialScreen} />
+          <Stack.Screen name="Dashboard" component={DashboardScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </ThemeProvider>

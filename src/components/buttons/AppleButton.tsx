@@ -2,8 +2,11 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import * as AppleAuthentication from 'expo-apple-authentication'
 
+type AppleButtonProps = {
+    onPress: () => void
+}
 
-export default function AppleButton() {
+const AppleButton = ({ onPress }: AppleButtonProps): JSX.Element => {
     return (
         <View>
             <AppleAuthentication.AppleAuthenticationButton
@@ -11,22 +14,7 @@ export default function AppleButton() {
                 buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
                 cornerRadius={5}
                 style={styles.appleButton}
-                onPress={async () => {
-                    try {
-                        const credential = await AppleAuthentication.signInAsync({
-                            requestedScopes: [
-                                AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
-                                AppleAuthentication.AppleAuthenticationScope.EMAIL,
-                            ],
-                        })
-                    } catch (e) {
-                        if (e.code === 'ERR_REQUEST_CANCELED') {
-                            console.log(e)
-                        } else {
-                            console.log('')
-                        }
-                    }
-                }} />
+                onPress={onPress} />
         </View>
     )
 }
@@ -44,3 +32,5 @@ const styles = StyleSheet.create({
         marginBottom: 16
     },
 })
+
+export default AppleButton;

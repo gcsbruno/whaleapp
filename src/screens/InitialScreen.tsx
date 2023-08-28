@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ImageBackground, ImageSourcePropType, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { NavigationProp } from '@react-navigation/native';
 import GoogleButton from '../components/buttons/GoogleButton';
@@ -6,16 +6,37 @@ import FacebookButton from '../components/buttons/FacebookButton';
 import AppleButton from '../components/buttons/AppleButton';
 import EmailButton from '../components/buttons/EmailButton';
 import { Paragraph, Subtitle, Title } from '../components/typograph/texts';
-import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
+import * as AppleAuthentication from 'expo-apple-authentication'
 
 type InitialScreenProps = {
     navigation: NavigationProp<any>;
 };
 
-const InitialScreen = ({ navigation }: InitialScreenProps): JSX.Element => {
+const InitialScreen = ({ navigation }: InitialScreenProps) => {
 
     function handleLoginPress() {
         navigation.navigate('Tutorial');
+    }
+
+    const handleSignIn = async () => {
+        try {
+            const credential = await AppleAuthentication.signInAsync({
+                requestedScopes: [
+                    AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+                    AppleAuthentication.AppleAuthenticationScope.EMAIL,
+                ],
+            });
+            const credentialState = await AppleAuthentication.getCredentialStateAsync(credential.user);
+
+            if (credentialState === AppleAuthentication.AppleAuthenticationCredentialState.AUTHORIZED) {
+                navigation.navigate('Tutorial', { credential })
+                console.log(credential.email)
+            }
+        } catch (e) {
+            if (e.code === 'ERR_REQUEST_CANCELED') {
+                console.log(e)
+            }
+        }
     }
 
     const googleIcon: ImageSourcePropType = require('../../assets/icons/google.png')
@@ -44,7 +65,8 @@ const InitialScreen = ({ navigation }: InitialScreenProps): JSX.Element => {
                         onPress={() => { }}
                         icon={facebookIcon}
                     />
-                    <AppleButton />
+                    <AppleButton
+                        onPress={handleSignIn} />
                     <EmailButton
                         title="Continue com o e-mail"
                         onPress={() => { }}
