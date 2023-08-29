@@ -1,6 +1,10 @@
-import { NavigationProp } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationProp, NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet, View, SafeAreaView, Image, Text, StatusBar } from 'react-native';
+import { TopMenu } from '../components/menu/TopMenu';
+import { Icon } from 'react-native-elements';
+
 
 type DashboardScreenProps = {
     route: any;
@@ -9,24 +13,76 @@ type DashboardScreenProps = {
 
 const DashboardScreen = ({ route, navigation }: DashboardScreenProps) => {
 
-    const { userName } = route.params
+    /**   const { userName } = route.params
+    
+        function verifica() {
+            console.log(userName.fullName)
+        }
+    */
+
+    const whaleLogo = <Image source={require('../../public/images/whale.png')} />
+    const categories = ['Passeios', 'Tours', 'Restaurantes', 'Praias']
+    const Stack = createStackNavigator();
+
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Bem-vindo(a), {userName.fullName}!</Text>
-        </View>
+
+        <SafeAreaView style={{
+            flex: 1,
+            paddingTop: StatusBar.currentHeight,
+        }}>
+
+            <View style={styles.container}>
+                <View style={styles.menuBar}>
+                    <Icon style={styles.icons} color={'#fff'} name='menu' />
+                    <View style={styles.titleContainer}>
+                        <TopMenu logo={whaleLogo} />
+                    </View>
+                    <Icon style={styles.icons} color={'#fff'} name='search' />
+                    <Icon style={styles.icons} color={'#fff'} name='notifications' />
+                </View>
+                <View style={styles.mainCard}>
+                    <Text style={styles.text}>Imagem</Text>
+                </View>
+            </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
     },
     text: {
         fontSize: 24,
         fontWeight: 'bold',
+    },
+    titleContainer: {
+        flex: 1, // Ocupar espaço disponível para centralizar o título
+        alignItems: 'center',
+    },
+    menuBar: {
+        backgroundColor: '#0038B9',
+        flexDirection: 'row',
+        justifyContent: 'space-between', // Para distribuir os ícones nos cantos
+        alignItems: 'center', // Centralizar verticalmente os ícones e o título
+        padding: 10,
+        width: "100%"
+    },
+    icons: {
+        marginHorizontal: 2
+    },
+    mainCard: {
+        margin: 10,
+        padding: 10,
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
 });
 

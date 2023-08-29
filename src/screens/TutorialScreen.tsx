@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, Platform } from 'react-native'
 import { NavigationProp } from '@react-navigation/native';
 import Swiper from 'react-native-swiper'
 import Button from '../components/buttons/Button';
@@ -11,12 +11,16 @@ type TutorialScreenProps = {
 
 const TutorialScreen = ({ route, navigation }: TutorialScreenProps) => {
 
-    const { credential } = route.params;
+    /**     const { credential } = route.params;
+    
+        const handleFinishTutorial = () => {
+            navigation.navigate('Dashboard', { userName: credential.fullName });
+        }
+    */
 
-    const handleFinishTutorial = () => {
-        navigation.navigate('Dashboard', { userName: credential.fullName });
+    const finishTutorial = () => {
+        navigation.navigate('Dashboard')
     }
-
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -49,7 +53,7 @@ const TutorialScreen = ({ route, navigation }: TutorialScreenProps) => {
                     </View>
                 </View>
             </Swiper>
-            <Button title='Finalizar' type='cta' onPress={handleFinishTutorial} />
+            <Button title='Finalizar' type='cta' onPress={finishTutorial} />
         </View>
     );
 }
