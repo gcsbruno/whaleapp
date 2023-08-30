@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImageBackground, ImageSourcePropType, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ImageBackground, ImageSourcePropType, StyleSheet, TouchableOpacity, View, Platform } from 'react-native';
 import { NavigationProp } from '@react-navigation/native';
 import GoogleButton from '../components/buttons/GoogleButton';
 import FacebookButton from '../components/buttons/FacebookButton';
@@ -18,7 +18,7 @@ const InitialScreen = ({ navigation }: InitialScreenProps) => {
         navigation.navigate('Tutorial');
     }
 
-    const handleSignIn = async () => {
+    const handleAppleSignIn = async () => {
         try {
             const credential = await AppleAuthentication.signInAsync({
                 requestedScopes: [
@@ -65,8 +65,11 @@ const InitialScreen = ({ navigation }: InitialScreenProps) => {
                         onPress={() => { }}
                         icon={facebookIcon}
                     />
-                    <AppleButton
-                        onPress={handleSignIn} />
+                    {Platform.OS === 'ios' && (
+                        <AppleButton
+                        onPress={handleAppleSignIn} />
+                    )}
+                    
                     <EmailButton
                         title="Continue com o e-mail"
                         onPress={() => { }}
