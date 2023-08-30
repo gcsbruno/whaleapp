@@ -59,14 +59,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     titleContainer: {
-        flex: 1, // Ocupar espaço disponível para centralizar o título
+        flex: 1, 
         alignItems: 'center',
     },
     menuBar: {
         backgroundColor: '#0038B9',
         flexDirection: 'row',
-        justifyContent: 'space-between', // Para distribuir os ícones nos cantos
-        alignItems: 'center', // Centralizar verticalmente os ícones e o título
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
         padding: 10,
         width: "100%"
     },
