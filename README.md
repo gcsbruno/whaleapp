@@ -26,7 +26,7 @@ O projeto atualmente está em seu estado de desenvolvimento de MVP (Minimum Viab
 ![](https://github.com/gcsbruno/whaleapp/assets/72214347/d6baede7-41bb-4675-9502-e7e609d1ff68)
 ![](https://github.com/gcsbruno/whaleapp/assets/72214347/85c58917-09dc-40b8-969f-623291cb421d)
 
-A interface do usuário (UI) está em fase de criação e já foram selecionadas algumas bibliotecas-chave para o desenvolvimento. Abaixo estão as principais bibliotecas utilizadas, com exceção das bibliotecas padrão do Expo e React Native.
+A interface do usuário (UI) está em fase de criação e já foram selecionadas algumas bibliotecas-chave para o desenvolvimento. Abaixo estão as principais bibliotecas utilizadas.
 
 ## Bibliotecas Utilizadas
 
@@ -36,23 +36,17 @@ A interface do usuário (UI) está em fase de criação e já foram selecionadas
 
 - **@react-native-google-signin/google-signin**: Biblioteca para implementação de autenticação com a conta Google(pode sofrer alteração).
 
-- **@react-navigation/native-stack**: Biblioteca que fornece um sistema de navegação de pilha para a aplicação.
-
 - **expo-apple-authentication**: Biblioteca para autenticação de usuários usando a conta Apple.
 
 - **expo-auth-session**: Biblioteca para gerenciar sessões de autenticação com diversos provedores de autenticação.
 
 - **expo-facebook**: Biblioteca para integração com a API do Facebook, utilizado para autenticação e compartilhamento de conteúdo(pode sofrer alteração).
 
-- **expo-font**: Biblioteca para facilitar o uso de fontes personalizadas no aplicativo.
-
 - **expo-google-sign-in**: Biblioteca para implementação de autenticação com a conta Google (alternativa).
 
 - **expo-local-authentication**: Biblioteca para autenticação local, como reconhecimento facial e de impressão digital.
 
-- **expo-status-bar**: Biblioteca para controle da barra de status do dispositivo.
-
-- **firebase**: Biblioteca que fornece recursos para armazenamento e gerenciamento de dados em tempo real, que pode ser usada como backend.
+- **firebase**: Biblioteca que fornece recursos para armazenamento e gerenciamento de dados em tempo real, que pode ser usada como backend(pode sofrer alteração).
 
 - **react-native-elements**: Biblioteca que fornece elementos de interface de usuário personalizáveis.
 
