@@ -6,6 +6,15 @@ O Whale App é um projeto em desenvolvimento que tem como objetivo criar uma apl
 
 O projeto atualmente está em seu estado de desenvolvimento de MVP (Minimum Viable Product) e as regras de negócios estão sendo estudadas e definidas. O backend ainda não foi implementado e está em processo de análise para determinar as melhores ferramentas que se adequam ao escopo do projeto.
 
+## Interface do Usuário
+
+![](https://github.com/gcsbruno/whaleapp/assets/72214347/cf6e8a29-dbd6-4017-87ed-c518f4a8a3e5)
+![](https://github.com/gcsbruno/whaleapp/assets/72214347/e6665477-6fa9-4219-ba33-cbddff858907)
+![](https://github.com/gcsbruno/whaleapp/assets/72214347/bb0b68d0-ba13-4659-be3a-b5d45ec0ec06)
+![](https://github.com/gcsbruno/whaleapp/assets/72214347/6709c0eb-d7b1-43a0-a338-fea201d99547)
+![](https://github.com/gcsbruno/whaleapp/assets/72214347/d6baede7-41bb-4675-9502-e7e609d1ff68)
+![](https://github.com/gcsbruno/whaleapp/assets/72214347/85c58917-09dc-40b8-969f-623291cb421d)
+
 A interface do usuário (UI) está em fase de criação e já foram selecionadas algumas bibliotecas-chave para o desenvolvimento. Abaixo estão as principais bibliotecas utilizadas, com exceção das bibliotecas padrão do Expo e React Native.
 
 ## Bibliotecas Utilizadas
